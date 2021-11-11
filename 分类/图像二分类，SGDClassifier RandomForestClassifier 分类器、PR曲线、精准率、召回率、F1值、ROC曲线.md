@@ -1,4 +1,4 @@
-﻿github:https://github.com/gaowanlu/MachineLearning-DeepLearning
+﻿ithub:https://github.com/gaowanlu/MachineLearning-DeepLearning
 ## 依赖:
 
 tensorflow、matplotlib、numpy、sklearn、pickle  

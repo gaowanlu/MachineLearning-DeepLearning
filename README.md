@@ -13,8 +13,10 @@
   - [LinearRegression、最小二乘法、梯度下降、SDG、多项式回归、学习曲线、岭回归、Lasso回归]🎉
   - `逻辑回归` 
   - [单特征、多特征 、Softmax多特征多分类]🎉
-* `支持向量机(SVM)`🤦‍♂️
-  -  `线性SVM分类` 🎶
-  -  `非线性SVM分类` 🐱‍🏍
+* `支持向量机(SVM)`
+  -  `线性SVM分类` 🎉 
+  -  [SVC、特征缩放]  
+  -  `非线性SVM分类` 🎉 
+  -  [PolynomialFeatures、LinearSVC、多项式内核、高斯RBF内核、计算复杂度]
   -  `SVM回归`🙊
 

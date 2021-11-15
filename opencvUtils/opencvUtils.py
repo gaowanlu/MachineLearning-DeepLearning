@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import pickle
 # test opencv 
 """
 print(cv2.__version__)
@@ -140,25 +141,52 @@ def get_split(img):
     BGR=cv2.split(img)
     return BGR
 
+#获得图像的长与宽
+def get_img_width(img):
+    return img.shape[1]
+def get_img_height(img):
+    return img.shape[0]
+def get_img_large_side(img):
+    if(img.shape[0]>img.shape[1]):
+        return img.shape[0]
+    else:
+        return img.shape[1]
+def get_img_ROI(img,x,y,width,height):
+    return img[y:y+height,x:x+width]
 
 def main():
+    save_count=0
+    with open('./face.model','rb') as fr:
+        face_model=pickle.load(fr)
+
     cap=cv2.VideoCapture(0)
+    #width 640 height  480
     get_namedWindow("Video")
     while 1:
         success,img=cap.read()
         if(not success):
             break
-        print(img)
+        print(img.shape)
+        get_rect(img,(204,77),(464,384),(255,0,0),2)
         origin_img=img.copy()
         BGR=get_split(origin_img)
-        cv2.imshow("G",BGR[1])
+        #cv2.imshow("G",BGR[1])
         img=get_Gray(img)
-        img=get_threshold(img,120,255)
-        # print(type(img))
-        cv2.imshow("Video",img)
+        #img=get_threshold(img,120,255)
+        face=get_img_ROI(img,204,77,464-204,384-77)
+        #识别检测
+        dp_data=face.reshape(1,-1)
+        #dp_data=(dp_data>100)
+        print("识别结果 : ",face_model.predict(dp_data))
+        origin_img = cv2.putText(origin_img, '{}'.format(face_model.predict(dp_data)), (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 2)
+        cv2.imshow("Video",face)
         cv2.imshow("origin_img",origin_img)
-        if(cv2.waitKey(1)&0xFF==ord('q')):
+        key=cv2.waitKey(1)
+        if(key&0xFF==ord('q')):
             break
+        elif(key&0xFF==ord('s')):
+            cv2.imwrite('./nosample/{}.jpg'.format(save_count),face, [int( cv2.IMWRITE_JPEG_QUALITY), 95])
+            save_count+=1
 
 if __name__ == "__main__":
     main()

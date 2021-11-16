@@ -167,18 +167,37 @@ def main():
         if(not success):
             break
         print(img.shape)
-        get_rect(img,(204,77),(464,384),(255,0,0),2)
         origin_img=img.copy()
         BGR=get_split(origin_img)
         #cv2.imshow("G",BGR[1])
-        img=get_Gray(img)
         #img=get_threshold(img,120,255)
-        face=get_img_ROI(img,204,77,464-204,384-77)
-        #识别检测
-        dp_data=face.reshape(1,-1)
+        #滑动窗口检测
+        result=False
+        img=get_Gray(img)
+        x=0
+        y=0
+        while x <640-260:
+            while y <480-307:
+                face=get_img_ROI(img,x,y,260,307)
+                dp_data=face.reshape(1,-1)
+                if(face_model.predict(dp_data)):
+                    get_rect(origin_img,(x,y),(x+260,y+307),(255,0,0),2)
+                    result=True
+                    x+=260
+                    y+=307
+                    if(y>=480-307 or x>=640-260):
+                        break
+                else:
+                    y+=10
+            x+=10
+            y=0
+        # get_rect(img,(204,77),(464,384),(255,0,0),2)
+        # face=get_img_ROI(img,204,77,464-204,384-77)
+        # #识别检测
+        # dp_data=face.reshape(1,-1)
         #dp_data=(dp_data>100)
-        print("识别结果 : ",face_model.predict(dp_data))
-        origin_img = cv2.putText(origin_img, '{}'.format(face_model.predict(dp_data)), (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 2)
+        #print("识别结果 : ",face_model.predict(dp_data))
+        origin_img = cv2.putText(origin_img, '{}'.format(result), (50, 300), cv2.FONT_HERSHEY_SIMPLEX, 1.2, (255, 255, 255), 2)
         cv2.imshow("Video",face)
         cv2.imshow("origin_img",origin_img)
         key=cv2.waitKey(1)

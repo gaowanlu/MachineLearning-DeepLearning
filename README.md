@@ -28,7 +28,12 @@
   -  `非线性SVM分类` 🎉 
   -  [PolynomialFeatures、LinearSVC、多项式内核、高斯RBF内核、计算复杂度]
   -  `SVM回归`🎉 
-  -  [LinearSVR、SVR、多阶]
+  -  [LinearSVR、SVR、多阶] 
+  
+* ### `决策树` 
+  - `分类` 😶‍🌫️
+  - [DecisionTreeClassifier、决策树可视化(graphviz)]
+  - `回归`
 
 ---  
 ## 关于OpenCV

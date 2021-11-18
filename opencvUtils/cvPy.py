@@ -22,7 +22,8 @@ get_fps=FPS()
 
 # 获得灰度图像
 def get_Gray(img):
-    return cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    cp=img.copy()
+    return cv2.cvtColor(cp,cv2.COLOR_BGR2GRAY)
 
 #高斯滤波
 def get_gaussianBlur(img,size):

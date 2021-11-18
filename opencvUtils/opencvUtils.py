@@ -19,7 +19,7 @@ def main():
             break
         #print(img.shape)
         origin_img=img.copy()
-        BGR=cvPy.get_split(origin_img)
+        #BGR=cvPy.get_split(origin_img)
         #cv2.imshow("G",BGR[1])
         #img=get_threshold(img,120,255)
         #滑动窗口检测

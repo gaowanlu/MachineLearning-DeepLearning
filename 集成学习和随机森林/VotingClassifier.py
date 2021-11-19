@@ -20,7 +20,8 @@ import matplotlib.pyplot as plt
 #数据准备
 X, y = make_moons(n_samples=500, noise=0.30, random_state=42)
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=42)
-plt.plot(X,y,"b.")
+plt.plot(X[:, 0][y==0], X[:, 1][y==0], "yo", alpha=0.5)
+plt.plot(X[:, 0][y==1], X[:, 1][y==1], "bs", alpha=0.5)
 plt.show()
 
 log_clf=LogisticRegression(solver="lbfgs", random_state=42)

@@ -50,13 +50,24 @@
    [硬投票、软投票]  
   - [x] `bagging 和 pasting`  🎉 
    [BaggingClassifier、包外评估、随机补丁和随机子空间]  
-  - [x] `随机森林`  
+  - [x] `随机森林`  🎉
    [RandomForestClassifier、极端随机树(ExtraTreesClassifier)、特征重要性]  
-  - [x] `提升法` 
+  - [x] `提升法` 🎉
   [AdaBoosting、GradientBoosting、早停止、xbgboost梯度提升早停止]  
-  - [x] `堆叠法`
+  - [x] `堆叠法`🎉
 * ### `降维`   
-  ```We get start  ```
+  - [x] `基础`  🎉
+    [投影法、流形学习 ]
+  - [x] `PCA`🎉
+    [主成分、解释方差比] 
+  - [x] `选择维度`  🎉
+    [指定解释方差比、指定维度、PCA压缩]  
+  - [x] `其他PCA` 🎉
+    [随机PCA、增量PCA、内核PCA]  
+  - [x] `LLE`  🎉
+    [ LocallyLinearEmbedding] 
+  - [x] `其他降维技术` 🎉
+    [ MDS、Isomap、t-SNE] 
 * ### `无监督学习`   
   ```鸡冻  ```
 ## 深度学习   
@@ -73,9 +84,9 @@
 
 
 ## 一些玩具小项目  
-目录位置 /opencvUtils/  
+目录位置 /project/  
 1. cvPy (Python OpenCV的常用函数封装)   
-2. facedp (基于SGDClassifier的人脸检测)  
+2. facedp_sgd (基于SGDClassifier的人脸检测)  
 
 ---  
 ## 关于OpenCV

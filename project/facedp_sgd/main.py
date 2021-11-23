@@ -2,11 +2,12 @@ import cv2
 import numpy as np
 import pickle
 import time
-import cvPy
+import cvPy.cvPy as cvPy
 
+'''将此文件移动到project目录下 即可运行'''
 def main():
     save_count=0
-    with open('./face.model','rb') as fr:
+    with open('./facedp_sgd/face.model','rb') as fr:
         face_model=pickle.load(fr)
 
     cap=cv2.VideoCapture(0)

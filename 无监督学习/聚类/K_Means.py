@@ -4,7 +4,8 @@ from sklearn.datasets import make_blobs
 import numpy as np
 import matplotlib.pylab as plt
 from sklearn.cluster import KMeans 
-
+import tensorflow as tf
+print("GPU",tf.test.is_gpu_available())
 # 数据准备
 blob_centers = np.array(
     [[0.2,  2.3],

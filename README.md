@@ -96,6 +96,7 @@
 目录位置 /project/  
 1. cvPy (Python OpenCV的常用函数封装)   
 2. facedp_sgd (基于SGDClassifier的人脸检测与K-Means人脸图像分割)  
+3. PCBCheck (电脑主板 螺丝装配 检测)  
 
 ---  
 ## 关于OpenCV

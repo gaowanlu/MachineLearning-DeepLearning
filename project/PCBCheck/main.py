@@ -107,6 +107,12 @@ def all(index):
     cvPy.get_namedWindow("me")
     cvPy.get_namedWindow("all")
     all=cv2.imread("C:\\Users\\gaowanlu\\Desktop\\MyProject\\A10\\all\\all ({}).jpg".format(index),cv2.IMREAD_COLOR)
+    #通道分离 
+    # BGR=cvPy.get_split(all)
+    # G_B=BGR[1]-BGR[0]
+    # G_R=BGR[1]-BGR[2]
+    # Bin=np.bitwise_or(G_B,G_R)
+
     hsv = cv2.cvtColor(all, cv2.COLOR_BGR2HSV)
     thresh1 = cv2.inRange(hsv,np.array([35, 43, 46]),np.array([77, 255, 255]));
     thresh1=cvPy.get_eroded(thresh1,(5,5),5)
@@ -127,11 +133,11 @@ def all(index):
 
     #all=cvPy.get_drawContours(all,contours)
     # thresh1=cvPy.get_eroded(thresh1,(5,5),10)
-    cv2.imshow("me",thresh1)
-    cv2.imshow("all",all)
-    cv2.waitKey(0)
+    cv2.imshow("me",thresh1)#G_B
+    cv2.imshow("all",all)#Bin
+    cv2.waitKey(10)
 
 if __name__ == "__main__":
-    main()
-    # for i in range(1,36+1):
-    #     all(i)
+    #main()
+    for i in range(1,36+1):
+        all(i)

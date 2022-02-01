@@ -1,6 +1,6 @@
 # 机器学习与深度学习 
 
-tensorflow\scikit-learn 机器学习与深度学习 学习例程  
+tensorflow\scikit-learn 机器学习与深度学习 代码阅读与整理后的学习例程  
 
 ## 快速上手  
 
@@ -53,11 +53,18 @@ tensorflow\scikit-learn 机器学习与深度学习 学习例程
 
 ## 深度学习   
 ### `人工神经网络ANN`   
-   * 感知机 => 单层感知机 、多层感知机图像分类器 、MLP回归 
-   * 函数API构建非顺序网络 
-   * 微调神经网络超参数 => 随机调整
+  * 感知机 => 单层感知机 、多层感知机图像分类器 、MLP回归 
+  * 函数API构建非顺序网络 
+  * 微调神经网络超参数 => 随机调整
   
-- [ ] `深度神经网络DNN`  
+### `训练深度神经网络`  
+  * 神经元权重初始化 => Glorot与He初始化  
+  * 非饱和激活函数 => ReLU及其变体
+  * 批量归一化 => BatchNormalization层  
+  * 梯度裁剪  clipvalue、clipnorm   
+  * 优化器   code reading...
+  * 重置预训练器 code reading... 
+  * 正则化预防过拟合  code reading...
 - [ ] `tf 自定义模型训练`  
 - [ ] `tf 加载与预处理数据`  
 - [ ] `卷积神经网络CNN`   

@@ -67,15 +67,16 @@ tensorflow\scikit-learn 机器学习与深度学习 代码阅读与整理后的�
   * `学习率调度` => 幂调度、指数调度、分段常数调度、性能调度、1周期调度  
   * `正则化预防过拟合` => ℓ1 与 ℓ2 正则化、Dropout、Alpha Dropout、MC Dropout(蒙特卡洛方法)  
   
+---
 
-- TODO `tf 自定义模型训练`  
-* TODO `tf 加载与预处理数据`  
-* TODO `卷积神经网络CNN`
-* TODO `RNN和CNN处理序列`  
-* TODO `RNN和注意力机制nlp`  
-* TODO `自动编码器、GAN表征学习、生成学习`  
-* TODO `强化学习`  
-* TODO `大规模训练和tf模型部署`  
+### `tensorflow 自定义模型训练`  
+### `tensorflow 加载与预处理数据`  
+### `卷积神经网络 CV`
+### `RNN和CNN处理序列`  
+### `RNN和注意力机制NLP`  
+### `自动编码器、GAN表征学习、生成学习`  
+### `强化学习`  
+### `大规模训练和tensorflow模型部署`  
 
 
 ## 有趣的  

@@ -5,7 +5,7 @@ import sklearn
 # 对于其他网络BN就够了通常
 
 
-# 在model.compile时进行
+# 在model.compile时进行 设置优化器的梯度阈值
 optimizer = keras.optimizers.SGD(clipvalue=1.0)
 # 该优化器将梯度向量每个分量都裁剪为-1.0 ~ 1.0 之间
 # [0.9,100] => [0.9,1.0]

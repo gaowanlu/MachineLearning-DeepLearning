@@ -27,6 +27,7 @@ X_test_scaled = scaler.transform(X_test)
 
 # 定义损失函数--------------------
 # 在 tf.losses.Huber 中有huber损失函数 为了学习进行自定义模拟
+input_shape = X_train.shape[1:]
 
 
 def huber_fn(y_true, y_pred):
@@ -59,7 +60,6 @@ def draw_huber():
 draw_huber()
 
 
-input_shape = X_train.shape[1:]
 # 构建神经网络
 model = keras.models.Sequential([
     keras.layers.Dense(30, activation="selu", kernel_initializer="lecun_normal",

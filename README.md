@@ -67,9 +67,9 @@ tensorflow\scikit-learn 机器学习与深度学习 代码阅读与整理后的�
   * `学习率调度` => 幂调度、指数调度、分段常数调度、性能调度、1周期调度  
   * `正则化预防过拟合` => ℓ1 与 ℓ2 正则化、Dropout、Alpha Dropout、MC Dropout(蒙特卡洛方法)  
   
----
-
 ### `tensorflow 自定义模型训练`  
+  * 像Numpy一样使用tf  => 张量定义、索引操作、张量运算、张量与numpy转换、字符串、不规则张量(Ragged tensors) 、稀疏张量(Sparse tensors)、集合、变量(tf.Variable)、张量数组
+
 ### `tensorflow 加载与预处理数据`  
 ### `卷积神经网络 CV`
 ### `RNN和CNN处理序列`  

@@ -46,6 +46,7 @@ tf.Tensor(
 # tf.reshape() tf.squeeze() tf.tile()
 # tf.reduce_mean() tf.reduce_sum() tf.reduce_max() tf.math.log()
 # np.mean()        np.sum()        np.max()        np.log()
+
 # square 元素自平方
 print(tf.square(m1))
 '''
@@ -102,78 +103,172 @@ print(tf.strings.unicode_decode(b, "UTF-8"))
 
 # String arrays
 p = tf.constant(["Café", "Coffee", "caffè", "咖啡"])
-tf.strings.length(p, unit="UTF8_CHAR")
-r = tf.strings.unicode_decode(p, "UTF8")
-r
-print(r)
+print(tf.strings.length(p, unit="UTF8_CHAR"))
+# tf.Tensor([4 6 5 2], shape=(4,), dtype=int32)
+r = tf.strings.unicode_decode(p, "UTF8")  # 将字符转为UTF-8编码
+print("r>>", r)
 
 
-# Ragged tensors
+# Ragged tensors 不规则张量
 print(r[1])
+# tf.Tensor([ 67 111 102 102 101 101], shape=(6,), dtype=int32)
 print(r[1:3])
+# <tf.RaggedTensor [[67, 111, 102, 102, 101, 101], [99, 97, 102, 102, 232]]>
 r2 = tf.ragged.constant([[65, 66], [], [67]])
 print(tf.concat([r, r2], axis=0))
+# <tf.RaggedTensor [[67, 97, 102, 233], [67, 111, 102, 102, 101, 101], [99, 97, 102, 102, 232], [21654, 21857], [65, 66], [], [67]]>
 r3 = tf.ragged.constant([[68, 69, 70], [71], [], [72, 73]])
-print(tf.concat([r, r3], axis=1))
-tf.strings.unicode_encode(r3, "UTF-8")
-r.to_tensor()
+print(tf.concat([r, r3], axis=1))  # 将r3的每一行最佳到r响应的行
+# <tf.RaggedTensor [[67, 97, 102, 233, 68, 69, 70], [67, 111, 102, 102, 101, 101, 71], [99, 97, 102, 102, 232], [21654, 21857, 72, 73]]>
+print("r3UTF-8", tf.strings.unicode_encode(r3, "UTF-8"))
+#tf.Tensor([b'DEF' b'G' b'' b'HI'], shape=(4,), dtype=string)
+print(r.to_tensor())
+''' 当有缺省项时 默认填充0处理
+[[   67    97   102   233     0     0]
+ [   67   111   102   102   101   101]
+ [   99    97   102   102   232     0]
+ [21654 21857     0     0     0     0]], shape=(4, 6), dtype=int32)
+'''
 
-# Sparse tensors
+
+# Sparse tensors 稀疏张量
 s = tf.SparseTensor(indices=[[0, 1], [1, 0], [2, 3]],
                     values=[1., 2., 3.],
                     dense_shape=[3, 4])
 print(s)
-tf.sparse.to_dense(s)
-s2 = s * 2.0
-try:
-    s3 = s + 1.
-except TypeError as ex:
-    print(ex)
+'''
+SparseTensor(indices=tf.Tensor(
+[[0 1]
+ [1 0]
+ [2 3]], shape=(3, 2), dtype=int64), values=tf.Tensor([1. 2. 3.], shape=(3,), dtype=float32), dense_shape=tf.Tensor([3 4], shape=(2,), dtype=int64))
+'''
+
+
+print("dense>>", tf.sparse.to_dense(s))  # 稀疏矩阵转为稠密矩阵
+'''
+tf.Tensor(
+[[0. 1. 0. 0.]
+ [2. 0. 0. 0.]
+ [0. 0. 0. 3.]], shape=(3, 4), dtype=float32)
+'''
+# 数乘 values 每个元素与2.0相乘
+print(s * 2.0)
+'''
+SparseTensor(indices=tf.Tensor(
+[[0 1]
+ [1 0]
+ [2 3]], shape=(3, 2), dtype=int64), values=tf.Tensor([2. 4. 6.], shape=(3,), dtype=float32), dense_shape=tf.Tensor([3 4], shape=(2,), dtype=int64))
+'''
+
+
 s4 = tf.constant([[10., 20.], [30., 40.], [50., 60.], [70., 80.]])
-tf.sparse.sparse_dense_matmul(s, s4)
-s5 = tf.SparseTensor(indices=[[0, 2], [0, 1]],
-                     values=[1., 2.],
-                     dense_shape=[3, 4])
-print(s5)
-try:
-    tf.sparse.to_dense(s5)
-except tf.errors.InvalidArgumentError as ex:
-    print(ex)
-s6 = tf.sparse.reorder(s5)
-tf.sparse.to_dense(s6)
+print("sparse_dense_matmul", tf.sparse.sparse_dense_matmul(s, s4))  # 稀疏与稠密矩阵相乘
+'''
+tf.Tensor(
+[[ 30.  40.]
+ [ 20.  40.]
+ [210. 240.]], shape=(3, 2), dtype=float32)
+'''
+# 稀疏矩阵排列 行优先排列
+print("reorder", tf.sparse.reorder(tf.SparseTensor(indices=[[0, 1], [2, 0], [1, 3]],
+                                                   values=[1., 2., 3.],
+                                                   dense_shape=[3, 4])))
+'''
+SparseTensor(indices=tf.Tensor(
+[[0 1]
+ [1 3]
+ [2 0]], shape=(3, 2), dtype=int64), values=tf.Tensor([1. 3. 2.], shape=(3,), dtype=float32), dense_shape=tf.Tensor([3 4], shape=(2,), dtype=int64))
+'''
 
 
-# Sets
+# Sets 集合
 set1 = tf.constant([[2, 3, 5, 7], [7, 9, 0, 0]])
 set2 = tf.constant([[4, 5, 6], [9, 10, 0]])
-tf.sparse.to_dense(tf.sets.union(set1, set2))
-tf.sparse.to_dense(tf.sets.difference(set1, set2))
-tf.sparse.to_dense(tf.sets.intersection(set1, set2))
+# 并集
+print(tf.sparse.to_dense(tf.sets.union(set1, set2)))
+# 差集
+print(tf.sparse.to_dense(tf.sets.difference(set1, set2)))
+# 交集
+print(tf.sparse.to_dense(tf.sets.intersection(set1, set2)))
+'''
+tf.Tensor(
+[[ 2  3  4  5  6  7]
+ [ 0  7  9 10  0  0]], shape=(2, 6), dtype=int32) 第二行是 0 7 9 10 后两位空
+tf.Tensor(
+[[2 3 7]
+ [7 0 0]], shape=(2, 3), dtype=int32)
+tf.Tensor(
+[[5 0]
+ [0 9]], shape=(2, 2), dtype=int32)
+'''
 
 
-# Variables
+# TF Variables 使用tf.constant定义常量 使用tf.Variables定义变量
+# 其提供var.assign() 可以进行重新赋值操作
 v = tf.Variable([[1., 2., 3.], [4., 5., 6.]])
 v.assign(2 * v)
+# 可以使用索引对特定元素进行赋值
 v[0, 1].assign(42)
 v[:, 2].assign([0., 1.])
+print("v", v)
+'''
+<tf.Variable 'Variable:0' shape=(2, 3) dtype=float32, numpy=
+array([[ 2., 42.,  0.],
+       [ 8., 10.,  1.]], dtype=float32)>
+'''
 try:
     v[1] = [7., 8., 9.]
 except TypeError as ex:
-    print(ex)
+    print("TypeError", ex)
+    print("不支持直接使用=进行赋值，理论上仍是常量，但提供assign方法")
+# 根据下标进行元素替换 var.scatter_nd_update
 v.scatter_nd_update(indices=[[0, 0], [1, 2]],
                     updates=[100., 200.])
+print("scatter_nd_update", v)
+'''
+<tf.Variable 'Variable:0' shape=(2, 3) dtype=float32, numpy=
+array([[100.,  42.,   0.],
+       [  8.,  10., 200.]], dtype=float32)>
+'''
+
+
+# 使用索引切片对元素进行替换
 sparse_delta = tf.IndexedSlices(values=[[1., 2., 3.], [4., 5., 6.]],
                                 indices=[1, 0])
+print("tf.IndexedSlices", sparse_delta)
+# tf.IndexedSlices IndexedSlices(indices=[1, 0], values=[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]])
 v.scatter_update(sparse_delta)
+print("scatter_update", v)
+'''
+scatter_update <tf.Variable 'Variable:0' shape=(2, 3) dtype=float32, numpy=
+array([[4., 5., 6.],
+       [1., 2., 3.]], dtype=float32)>
+'''
 
 
-# Tensor Arrays
+# Tensor Arrays 张量数组
 array = tf.TensorArray(dtype=tf.float32, size=3)
+# 下标写入
 array = array.write(0, tf.constant([1., 2.]))
 array = array.write(1, tf.constant([3., 10.]))
 array = array.write(2, tf.constant([5., 7.]))
-array.read(1)
-array.stack()
+# 下标索引
+print(array.read(1))
+'''
+tf.Tensor([ 3. 10.], shape=(2,), dtype=float32)
+'''
+# array.stack()
+print(array.stack())
+'''
+tf.Tensor(
+[[1. 2.]
+ [0. 0.]
+ [5. 7.]], shape=(3, 2), dtype=float32)
+'''
 mean, variance = tf.nn.moments(array.stack(), axes=0)
-mean
-variance
+print("均值", mean)
+print("方差", variance)
+'''
+均值 tf.Tensor([2. 3.], shape=(2,), dtype=float32)
+方差 tf.Tensor([4.6666665 8.666667 ], shape=(2,), dtype=float32)
+'''

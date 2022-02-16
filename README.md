@@ -9,73 +9,91 @@ tensorflow\scikit-learn 机器学习与深度学习 代码阅读与整理后的�
  
 ## 机器学习   
 
-### `基础知识`
+### [`基础知识`](./基础知识/)
+
 * [数据集与测试集](./基础知识/准备.ipynb)  
 * [csv文件使用](./基础知识/准备.ipynb)
 
-### `分类`
-  * [二分类](./分类/BinaryClassifier.py) => SDG手写数字二分类器  
-  * [模型评估](./分类) => PR、ROC、混淆矩阵、F1、精准率、召回率   
-  * [多分类](./分类/MultiouputClassification.py)  
+### [`分类`](./分类/)
 
-### `回归` 
-  * `线性回归` =>LinearRegression、最小二乘法、梯度下降、SDG、多项式回归、学习曲线、岭回归、Lasso回归
-  * `逻辑回归` =>单特征、多特征 、Softmax多特征多分类 
+* [二分类 => ](./分类/BinaryClassifier.py)  SDG手写数字二分类器  
+* [模型评估 => ](./分类)  PR、ROC、混淆矩阵、F1、精准率、召回率   
+* [多分类 => ](./分类/MultiouputClassification.py)  
 
-### `支持向量机(SVM)`
-  * `线性SVM分类` =>SVC、特征缩放  
-  * `非线性SVM分类` =>PolynomialFeatures、LinearSVC、多项式内核、高斯RBF内核、计算复杂度
-  * `SVM回归` =>LinearSVR、SVR、多阶 
+### [`回归`](./回归/) 
 
-### `决策树` 
-  * `分类` =>DecisionTreeClassifier、决策树可视化(graphviz)、超参数正则 
-  * `回归` =>DecisionTreeRegressor、模型效果可视化、正则化  
+* [线性回归 => ](./回归/linearRegression.py)LinearRegression、最小二乘法、梯度下降、SDG、多项式回归、学习曲线、岭回归、Lasso回归
+* [逻辑回归 => ](./回归/logisticRegression.py)单特征、多特征 、Softmax多特征多分类 
 
-### `集成学习和随机森林`   
-  * `投票分类器` => 硬投票、软投票  
-  * `bagging 和 pasting` => BaggingClassifier、包外评估、随机补丁和随机子空间  
-  * `随机森林` => RandomForestClassifier、极端随机树(ExtraTreesClassifier)、特征重要性  
-  * `提升法` => AdaBoosting、GradientBoosting、早停止、xbgboost梯度提升早停止  
-  * `堆叠法`  
+### [`支持向量机(SVM)`](./支持向量机/)
 
-### `降维`   
-  * `基础` => 投影法、流形学习  
-  * `PCA` => 主成分、解释方差比  
-  * `选择维度` => 指定解释方差比、指定维度、PCA压缩  
-  * `其他PCA` => 随机PCA、增量PCA、内核PCA  
-  * `LLE` => LocallyLinearEmbedding 
-  * `其他降维技术` => MDS、Isomap、t-SNE  
+* [线性SVM分类 => ](./支持向量机/linearSVMClassification.py)SVC、特征缩放  
+* [非线性SVM分类 => ](./支持向量机/nonlinearSVMClassification.py)PolynomialFeatures、LinearSVC、多项式内核、高斯RBF内核、计算复杂度
+* [SVM回归 => ](./支持向量机/SVMRegression.py) =>LinearSVR、SVR、多阶 
 
-### `无监督学习`   
-  * `聚类`  => 快速使用K-Means训练模型与预测、软聚类与硬聚类、寻找最佳K值、小批量Kmeans、KMeans图像分割、使用聚类对数据预处理、聚类半监督学习、DBSCAN（与KNN分类器）、其他聚类算法（谱聚类、层次聚类）   
-  * `高斯混合模型` =>  高斯混合模型基本使用、异常值检测、模型选择调优、贝叶斯高斯混合模型  
+### [`决策树`](./决策树/) 
+
+* [分类 => ](./决策树/DecisionTreeClassification.py)DecisionTreeClassifier、决策树可视化(graphviz)、超参数正则 
+* [回归 => ](./决策树/DecisionTreeRegression.py)DecisionTreeRegressor、模型效果可视化、正则化  
+
+### [`集成学习和随机森林`](./集成学习和随机森林)   
+
+* [投票分类器 => ](./集成学习和随机森林/VotingClassifier.py)硬投票、软投票  
+* [bagging 和 pasting => ](./集成学习和随机森林/)BaggingClassifier、包外评估、随机补丁和随机子空间  
+* [随机森林 =>](./集成学习和随机森林/RandomForsets.py)RandomForestClassifier、极端随机树(ExtraTreesClassifier)、特征重要性  
+* [提升法 => ](./集成学习和随机森林/)AdaBoosting、GradientBoosting、早停止、xbgboost梯度提升早停止  
+* [堆叠法](./集成学习和随机森林/)  
+
+### [`降维`](./降维)   
+
+* [基础 => ](./降维/base.py)投影法、流形学习  
+* [PCA => ](./降维/PCA.py)主成分、解释方差比  
+* [选择维度 => ](./降维/FindDimension.py)指定解释方差比、指定维度、PCA压缩  
+* [其他PCA => ](./降维/)随机PCA、增量PCA、内核PCA  
+* [LLE => ](./降维/LLE.py)LocallyLinearEmbedding 
+* [其他降维技术 => ](./降维/)MDS、Isomap、t-SNE  
+
+### [`无监督学习`](./无监督学习)   
+
+* [聚类 => ](./无监督学习/聚类)快速使用K-Means训练模型与预测、软聚类与硬聚类、寻找最佳K值、小批量Kmeans、KMeans图像分割、使用聚类对数据预处理、聚类半监督学习、DBSCAN（与KNN分类器）、其他聚类算法（谱聚类、层次聚类）   
+* [高斯混合模型 => ](./无监督学习/高斯混合模型/) 高斯混合模型基本使用、异常值检测、模型选择调优、贝叶斯高斯混合模型  
 
 
 ## 深度学习   
-### `人工神经网络ANN`   
-  * `感知机` => 单层感知机 、多层感知机图像分类器 、MLP回归 
-  * `函数API构建` => 非顺序网络(复杂自定义网络) 、TensorBoard的使用  
-  * `微调神经网络超参数` => 随机调整
+
+### [`人工神经网络ANN`](./人工神经网络/)   
+
+* [感知机 => ](./人工神经网络/)单层感知机 、多层感知机图像分类器 、MLP回归 
+* [函数API构建 => ](./人工神经网络/构建复杂模型/)非顺序网络(复杂自定义网络) 、TensorBoard的使用  
+* [微调神经网络超参数 => ](./人工神经网络/微调神经网络超参数/)随机调整
   
-### `训练深度神经网络`  
-  * `神经元权重初始化` => Glorot与He初始化  
-  * `非饱和激活函数` => ReLU及其变体
-  * `批量归一化` => BatchNormalization层  
-  * `梯度裁剪`  clipvalue、clipnorm   
-  * `重置预训练器` => 网络层重用、模型克隆、权重克隆  
-  * `优化器选择与优化` => momentum超参数(动量优化)、nesterov加速梯度、AdaGrad、RMSProp、adam、Adamax、Nadam  
-  * `学习率调度` => 幂调度、指数调度、分段常数调度、性能调度、1周期调度  
-  * `正则化预防过拟合` => ℓ1 与 ℓ2 正则化、Dropout、Alpha Dropout、MC Dropout(蒙特卡洛方法)  
+### [`训练深度神经网络`](./训练深度神经网络/)  
+
+* [神经元权重初始化 => ](./训练深度神经网络/Glorot和He初始化/) Glorot与He初始化  
+* [非饱和激活函数 => ](./训练深度神经网络/非饱和激活函数/)ReLU及其变体
+* [批量归一化 =>](./训练深度神经网络/批量归一化/) BatchNormalization层  
+* [梯度裁剪 => ](./训练深度神经网络/梯度裁剪/)  clipvalue、clipnorm   
+* [重置预训练器 => ](./训练深度神经网络/重置预训练层/)网络层重用、模型克隆、权重克隆  
+* [优化器选择与优化 => ](./训练深度神经网络/优化器)momentum超参数(动量优化)、nesterov加速梯度、AdaGrad、RMSProp、adam、Adamax、Nadam  
+* [学习率调度 => ](./训练深度神经网络/学习率调度/)幂调度、指数调度、分段常数调度、性能调度、1周期调度  
+* [正则化预防过拟合 => ](./训练深度神经网络/正则化) ℓ1 与 ℓ2 正则化、Dropout、Alpha Dropout、MC Dropout(蒙特卡洛方法)  
   
-### `tensorflow 自定义模型训练`  
-  * 像Numpy一样使用tf  => 张量定义、索引操作、张量运算、张量与numpy转换、字符串、不规则张量(Ragged tensors) 、稀疏张量(Sparse tensors)、集合、变量(tf.Variable)、张量数组
+### [`tensorflow 自定义模型训练`](./tensorflow自定义模型训练/)  
+
+* [像Numpy一样使用tf => ](./tensorflow自定义模型训练/像Numpy一样使用tf/)张量定义、索引操作、张量运算、张量与numpy转换、字符串、不规则张量(Ragged tensors) 、稀疏张量(Sparse tensors)、集合、变量(tf.Variable)、张量数组
 
 ### `tensorflow 加载与预处理数据`  
+
 ### `卷积神经网络 CV`
+
 ### `RNN和CNN处理序列`  
+
 ### `RNN和注意力机制NLP`  
+
 ### `自动编码器、GAN表征学习、生成学习`  
+
 ### `强化学习`  
+
 ### `大规模训练和tensorflow模型部署`  
 
 

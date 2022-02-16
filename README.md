@@ -80,7 +80,9 @@ tensorflow\scikit-learn 机器学习与深度学习 代码阅读与整理后的�
   
 ### [`tensorflow 自定义模型训练`](./tensorflow自定义模型训练/)  
 
-* [像Numpy一样使用tf => ](./tensorflow自定义模型训练/像Numpy一样使用tf/)张量定义、索引操作、张量运算、张量与numpy转换、字符串、不规则张量(Ragged tensors) 、稀疏张量(Sparse tensors)、集合、变量(tf.Variable)、张量数组
+* [像Numpy一样使用tf => ](./tensorflow自定义模型训练/像Numpy一样使用tf/)张量定义、索引操作、张量运算、张量与numpy转换、字符串、不规则张量(Ragged tensors) 、稀疏张量(Sparse tensors)、集合、变量(tf.Variable)、张量数组  
+* [定制模型和训练算法 => ](./tensorflow自定义模型训练/定制模型和训练算法/)版主正在努力阅读中
+* [tf函数和图 => ]()版主正在努力阅读中
 
 ### `tensorflow 加载与预处理数据`  
 

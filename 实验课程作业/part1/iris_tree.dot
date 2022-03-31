@@ -1,0 +1,21 @@
+digraph Tree {
+node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
+edge [fontname=helvetica] ;
+0 [label="tear production rate <= 7.5\nentropy = 1.312\nsamples = 19\nvalue = [12, 3, 4]\nclass = no lenses", fillcolor="#f1bc95"] ;
+1 [label="entropy = 0.0\nsamples = 10\nvalue = [10, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="astigmatic <= 5.5\nentropy = 1.53\nsamples = 9\nvalue = [2, 3, 4]\nclass = soft", fillcolor="#eadefb"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="entropy = 0.0\nsamples = 4\nvalue = [0, 0, 4]\nclass = soft", fillcolor="#8139e5"] ;
+2 -> 3 ;
+4 [label="age of the patient <= 0.5\nentropy = 0.971\nsamples = 5\nvalue = [2, 3, 0]\nclass = hard", fillcolor="#bdf6d5"] ;
+2 -> 4 ;
+5 [label="entropy = 0.0\nsamples = 2\nvalue = [0, 2, 0]\nclass = hard", fillcolor="#39e581"] ;
+4 -> 5 ;
+6 [label="spectacle prescription <= 3.5\nentropy = 0.918\nsamples = 3\nvalue = [2, 1, 0]\nclass = no lenses", fillcolor="#f2c09c"] ;
+4 -> 6 ;
+7 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 1, 0]\nclass = hard", fillcolor="#39e581"] ;
+6 -> 7 ;
+8 [label="entropy = 0.0\nsamples = 2\nvalue = [2, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
+6 -> 8 ;
+}

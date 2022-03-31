@@ -74,7 +74,9 @@ for i in range(len(MYDATA)):
     X.append(temp_x)
     Y.append(mapper[MYDATA[i][4]])
 
-X_train, X_val, y_train, y_val = train_test_split(X, Y, test_size=0.2)
+print(X[0])
+
+X_train, X_val, y_train, y_val = train_test_split(X, Y, test_size=0.25)
 
 # # 决策树最大深度为10
 tree_clf = DecisionTreeClassifier(max_depth=10, criterion='entropy')
@@ -95,30 +97,10 @@ print("请在当前目录执行 dot -Tpng iris_tree.dot -o iris_tree.png")
 # Source.from_file(os.path.join(".", "iris_tree.dot"))
 # # dot -Tpng iris_tree.dot -o iris_tree.png
 
-# '''
-# Scikit-Learn使用的是CART算法，该算法仅生成二叉树：非叶节点永远只有两个
-# 子节点（即问题答案仅有是或否）。但是，其他算法（比如ID3生成的决策树），其节点
-# 可以拥有两个以上的子节点
-# '''
-# plt.figure(figsize=(8, 4))
-# plot_decision_boundary(tree_clf, X, y)
-# plt.plot([2.45, 2.45], [0, 3], "k-", linewidth=2)
-# plt.plot([2.45, 7.5], [1.75, 1.75], "k--", linewidth=2)
-# plt.plot([4.95, 4.95], [0, 1.75], "k:", linewidth=2)
-# plt.plot([4.85, 4.85], [1.75, 3], "k:", linewidth=2)
-# plt.text(1.40, 1.0, "Depth=0", fontsize=15)
-# plt.text(3.2, 1.80, "Depth=1", fontsize=13)
-# plt.text(4.05, 0.5, "(Depth=2)", fontsize=11)
-# plt.show()
 
-
-# # 使用模型进行预测
-# print(tree_clf.predict_proba([[1.2, 13]]))
-# print(iris.target_names[tree_clf.predict([[1.2, 13]])])
-# '''
-# [[1. 0. 0.]] 各个目标的概率
-# ['setosa']
-# '''
+print(tree_clf.predict_proba([[0, 3, 5, 7]]))  # [[1. 0. 0.]]
+print(tree_clf.predict([[0, 3, 5, 7]]))  # [0]
+# 预测第一个样本为 no lenses
 
 
 # # 正则化超参数
@@ -128,24 +110,3 @@ print("请在当前目录执行 dot -Tpng iris_tree.dot -o iris_tree.png")
 # # 的最小样本数量）、min_weight_fraction_leaf（与min_samples_leaf一样，但表现为加权实
 # # 例总数的占比）、max_leaf_nodes（最大叶节点数量），以及max_features（分裂每个节点
 # # 评估的最大特征数量）。增大超参数min_*或减小max_*将使模型正则化
-# Xm, ym = make_moons(n_samples=100, noise=0.25, random_state=53)
-# print("Xm:\n", Xm)
-# print("ym:\n", ym)
-# deep_tree_clf1 = DecisionTreeClassifier(random_state=42)
-# deep_tree_clf2 = DecisionTreeClassifier(min_samples_leaf=4, random_state=42)
-# deep_tree_clf1.fit(Xm, ym)
-# deep_tree_clf2.fit(Xm, ym)
-
-# fig, axes = plt.subplots(ncols=2, figsize=(10, 4), sharey=True)
-# plt.sca(axes[0])
-# plot_decision_boundary(deep_tree_clf1, Xm, ym,
-#                        axes=[-1.5, 2.4, -1, 1.5], iris=False)
-# plt.title("No restrictions", fontsize=16)
-# plt.sca(axes[1])
-# plot_decision_boundary(deep_tree_clf2, Xm, ym,
-#                        axes=[-1.5, 2.4, -1, 1.5], iris=False)
-# plt.title("min_samples_leaf = {}".format(
-#     deep_tree_clf2.min_samples_leaf), fontsize=14)
-# plt.ylabel("")
-
-# plt.show()

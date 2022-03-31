@@ -1,8 +1,5 @@
-from operator import *
+import operator
 from math import log
-import pandas as pd
-import sklearn as sk
-import numpy as np
 from sklearn.model_selection import train_test_split
 
 print("HELLO WORLD THE TREE")
@@ -10,6 +7,7 @@ print("HELLO WORLD THE TREE")
 
 MYLABEL = ['age of the patient', 'spectacle prescription',
            'astigmatic', 'tear production rate']
+
 MYDATA = [
     ['young',  'myope',	'no', 'reduced',    'no lenses'],
     ['young',  'myope',	'no', 'normal',    'soft'],
@@ -36,10 +34,9 @@ MYDATA = [
     ['presbyopic',	'hyper'	,    'yes', 'reduced',    'no lenses'],
     ['presbyopic',	'hyper'	,    'yes', 'normal',    'no lenses']
 ]
-DATA_TRAIN, DATA_TEST = train_test_split(MYDATA, test_size=0.2)
+DATA_TRAIN, DATA_TEST = train_test_split(MYDATA, test_size=0.25)
 print("DATA_TRAIN", len(DATA_TRAIN))
 print("DATA_TEST", len(DATA_TEST))
-
 
 
 # 创建数据集
@@ -153,9 +150,37 @@ def createTree(dataSet, labels):
             splitDataSet(dataSet, bestFeat, value), subLables)
     return myTree
 
+# 使用决策树进行预测
+
+
+def useTree(tree, simple):
+    # 开始进行判断
+    iterTree = tree
+    result = ''
+    while(isinstance(iterTree, str) == False):
+        nowCheckKey = list(iterTree.keys())[0]
+        iterTree = iterTree[nowCheckKey]
+        simpleValue = simple[nowCheckKey]
+        iterTree = iterTree[simpleValue]
+        if(isinstance(iterTree, str) == True):
+            result = iterTree
+            break
+    return result
+
 
 if __name__ == "__main__":
     my_Data, labels = createDataSet()
     # print(calcShannonEnt(my_Data))
     Mytree = createTree(my_Data, labels)
     print(Mytree)
+    print(Mytree.keys())
+    # 进行测试
+    print(DATA_TEST)
+    for i in range(len(DATA_TEST)):
+        result = useTree(Mytree, {
+            'age of the patient': DATA_TEST[i][0],
+            'spectacle prescription': DATA_TEST[i][1],
+            'astigmatic': DATA_TEST[i][2],
+            'tear production rate': DATA_TEST[i][3]
+        })
+        print("real <{}> predict <{}>".format(DATA_TEST[i][4], result))

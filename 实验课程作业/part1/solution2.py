@@ -20,7 +20,7 @@ y_label = line_data["Salary"].values.reshape(-1, 1)
 linearModel = LinearRegression()
 # train fit
 linearModel.fit(x_train, y_label)
-print("w^ {} b^ {}".format(linearModel.intercept_, linearModel.coef_))
+print("w^ {} b^ {}".format(linearModel.coef_, linearModel.intercept_))
 print("predict x=0.8452 y={} ", linearModel.predict(
     np.array([0.845]).reshape(-1, 1)))
 
@@ -32,4 +32,4 @@ X = sm.add_constant(x_train)
 statsmodels_model = sm.OLS(y_label, X)
 results = statsmodels_model.fit()
 print("use statsmodels params w^ {} b^ {}".format(
-    results.params[0], results.params[1]))
+    results.params[1], results.params[0]))

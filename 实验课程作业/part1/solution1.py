@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 LINE_EXT_PATH = "./line-ext.csv"
 
 
@@ -11,7 +12,6 @@ line_data = load_data(LINE_EXT_PATH)
 # line_data.info()
 x_train = line_data["YearsExperience"].values
 y_label = line_data["Salary"].values
-
 # 求解w
 
 
@@ -52,3 +52,11 @@ def mymodel(x):
 
 
 print("now x=0.8452 predict y={}".format(mymodel(0.8452)))
+
+# 画图
+plt.plot(x_train, y_label, "b.")
+# 使用模型
+X_test = [[0], [2]]
+Y_pred = [[mymodel(X_test[0][0])], [mymodel(X_test[1][0])]]
+plt.plot(X_test, Y_pred, "r-")
+plt.show()

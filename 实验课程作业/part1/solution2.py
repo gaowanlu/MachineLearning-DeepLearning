@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 import numpy as np
+import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
 LINE_EXT_PATH = "./line-ext.csv"
@@ -33,3 +34,12 @@ statsmodels_model = sm.OLS(y_label, X)
 results = statsmodels_model.fit()
 print("use statsmodels params w^ {} b^ {}".format(
     results.params[1], results.params[0]))
+
+# 画图
+plt.plot(x_train, y_label, "b.")
+# 使用模型
+
+X_test = [[0], [2]]
+predict = linearModel.predict(np.array(X_test).reshape(-1, 1))
+plt.plot(X_test, predict, "r-")
+plt.show()

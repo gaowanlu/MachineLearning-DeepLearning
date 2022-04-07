@@ -1,14 +1,14 @@
 digraph Tree {
 node [shape=box, style="filled, rounded", color="black", fontname=helvetica] ;
 edge [fontname=helvetica] ;
-0 [label="tear production rate <= 7.5\nentropy = 1.135\nsamples = 18\nvalue = [12, 1, 5]\nclass = no lenses", fillcolor="#f1bb94"] ;
-1 [label="entropy = 0.0\nsamples = 9\nvalue = [9, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
+0 [label="tear production rate <= 7.5\nentropy = 1.436\nsamples = 18\nvalue = [10, 4, 4]\nclass = no lenses", fillcolor="#f4c9aa"] ;
+1 [label="entropy = 0.0\nsamples = 7\nvalue = [7, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
 0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
-2 [label="astigmatic <= 5.5\nentropy = 1.352\nsamples = 9\nvalue = [3, 1, 5]\nclass = soft", fillcolor="#d5bdf6"] ;
+2 [label="astigmatic <= 5.5\nentropy = 1.573\nsamples = 11\nvalue = [3, 4, 4]\nclass = hard", fillcolor="#ffffff"] ;
 0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
-3 [label="age of the patient <= 1.5\nentropy = 0.65\nsamples = 6\nvalue = [1, 0, 5]\nclass = soft", fillcolor="#9a61ea"] ;
+3 [label="age of the patient <= 1.5\nentropy = 0.722\nsamples = 5\nvalue = [1, 0, 4]\nclass = soft", fillcolor="#a06aec"] ;
 2 -> 3 ;
-4 [label="entropy = 0.0\nsamples = 4\nvalue = [0, 0, 4]\nclass = soft", fillcolor="#8139e5"] ;
+4 [label="entropy = 0.0\nsamples = 3\nvalue = [0, 0, 3]\nclass = soft", fillcolor="#8139e5"] ;
 3 -> 4 ;
 5 [label="spectacle prescription <= 3.5\nentropy = 1.0\nsamples = 2\nvalue = [1, 0, 1]\nclass = no lenses", fillcolor="#ffffff"] ;
 3 -> 5 ;
@@ -16,10 +16,14 @@ edge [fontname=helvetica] ;
 5 -> 6 ;
 7 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 0, 1]\nclass = soft", fillcolor="#8139e5"] ;
 5 -> 7 ;
-8 [label="age of the patient <= 0.5\nentropy = 0.918\nsamples = 3\nvalue = [2, 1, 0]\nclass = no lenses", fillcolor="#f2c09c"] ;
+8 [label="spectacle prescription <= 3.5\nentropy = 0.918\nsamples = 6\nvalue = [2, 4, 0]\nclass = hard", fillcolor="#9cf2c0"] ;
 2 -> 8 ;
-9 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 1, 0]\nclass = hard", fillcolor="#39e581"] ;
+9 [label="entropy = 0.0\nsamples = 3\nvalue = [0, 3, 0]\nclass = hard", fillcolor="#39e581"] ;
 8 -> 9 ;
-10 [label="entropy = 0.0\nsamples = 2\nvalue = [2, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
+10 [label="age of the patient <= 0.5\nentropy = 0.918\nsamples = 3\nvalue = [2, 1, 0]\nclass = no lenses", fillcolor="#f2c09c"] ;
 8 -> 10 ;
+11 [label="entropy = 0.0\nsamples = 1\nvalue = [0, 1, 0]\nclass = hard", fillcolor="#39e581"] ;
+10 -> 11 ;
+12 [label="entropy = 0.0\nsamples = 2\nvalue = [2, 0, 0]\nclass = no lenses", fillcolor="#e58139"] ;
+10 -> 12 ;
 }

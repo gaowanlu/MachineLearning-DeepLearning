@@ -183,4 +183,4 @@ if __name__ == "__main__":
             'astigmatic': DATA_TEST[i][2],
             'tear production rate': DATA_TEST[i][3]
         })
-        print("real <{}> predict <{}>".format(DATA_TEST[i][4], result))
+        print("real <{}> predict <{}>  right? <{}>".format(DATA_TEST[i][4], result,result==DATA_TEST[i][4]))
